@@ -1,9 +1,9 @@
 import bg from '../../assets/images/bg.png';
 import { Wrapper } from './WrapperPage.styles';
 
-const WrapperPage = ({ className }) => {
+const WrapperPage = ({ children }) => {
   const pathName = window.location.pathname;
-  return <>{pathName !== '/' && <Wrapper bg={bg} />}</>;
+  return <>{pathName !== '/' && <Wrapper bg={bg}>{children}</Wrapper>}</>;
 };
 
 export default WrapperPage;

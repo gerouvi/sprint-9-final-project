@@ -14,7 +14,6 @@ export const THEME_STYLES = {
     SM: '0.5rem',
   },
   MEDIA_QUERYS: {
-    MOBILE: '320',
-    TABLET: '720',
+    DESKTOP: '880',
   },
 };
