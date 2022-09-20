@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  createUserWithEmailAndPasswordFunction,
-  sendEmailVerificationFunction,
-} from '../../lib/firebase/firebase-auth';
+import { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import useSignUp from '../../lib/hooks/useSignUp';
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
 import { InputStyled } from '../Form/InputStyled';
@@ -11,7 +8,15 @@ import { LinkText, Wrapper } from './SignUp.styles';
 
 const SignUp = () => {
   console.log('signup');
-  const { credentialsUser, handleFieldChange, handleSignUp } = useSignUp();
+
+  const { user } = useContext(UserAuthContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) navigate('/account');
+  }, [user, navigate]);
+
+  const { credentialsUser, handleFieldChange, signUpSubmit } = useSignUp();
+
   return (
     <>
       <Wrapper>
@@ -19,7 +24,7 @@ const SignUp = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleSignUp();
+            signUpSubmit();
           }}
         >
           <div>

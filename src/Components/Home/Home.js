@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import { THEME_STYLES } from '../../styles/THEME_STYLES';
 import { ButtonStyled } from '../Buttons/Button.styles';
 import { OrderList, TextDescription } from './Home.styles';
 
 const Home = () => {
   console.log('home');
+
+  const { user } = useContext(UserAuthContext);
   return (
     <TextDescription>
       <p>
@@ -29,12 +33,16 @@ const Home = () => {
         </li>
       </OrderList>
 
-      <Link to="/signup">
-        <ButtonStyled color={THEME_STYLES.COLORS.RED}>Sign Up</ButtonStyled>
-      </Link>
-      <Link to="/signin">
-        <ButtonStyled>Sign In</ButtonStyled>
-      </Link>
+      {!user && (
+        <>
+          <Link to="/signup">
+            <ButtonStyled color={THEME_STYLES.COLORS.RED}>Sign Up</ButtonStyled>
+          </Link>
+          <Link to="/signin">
+            <ButtonStyled>Sign In</ButtonStyled>
+          </Link>
+        </>
+      )}
     </TextDescription>
   );
 };

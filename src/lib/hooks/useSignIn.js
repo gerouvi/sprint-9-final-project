@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import {
-  createUserWithEmailAndPasswordFunction,
-  sendEmailVerificationFunction,
-} from '../firebase/firebase-auth';
+import { signInWithEmailAndPasswordFunction } from '../firebase/firebase-auth';
 
-const useSignUp = () => {
+const useSignIn = () => {
   const [credentialsUser, setCredentialsUser] = useState({
     email: '',
     password: '',
@@ -15,14 +12,13 @@ const useSignUp = () => {
     setCredentialsUser((prev) => ({ ...prev, [key]: value }));
   };
 
-  const signUpSubmit = async () => {
+  const signInSubmit = async () => {
     setCredentialsUser((prev) => ({ ...prev, error: undefined }));
     try {
-      await createUserWithEmailAndPasswordFunction(
+      await signInWithEmailAndPasswordFunction(
         credentialsUser.email,
         credentialsUser.password
       );
-      await sendEmailVerificationFunction();
     } catch (err) {
       setCredentialsUser((prev) => ({ ...prev, error: err.message }));
     }
@@ -31,8 +27,8 @@ const useSignUp = () => {
   return {
     credentialsUser,
     handleFieldChange,
-    signUpSubmit,
+    signInSubmit,
   };
 };
 
-export default useSignUp;
+export default useSignIn;

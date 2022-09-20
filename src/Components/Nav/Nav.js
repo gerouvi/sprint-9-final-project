@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logoMemoWords from '../../assets/images/memoWordsTr.png';
+import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import { ButtonStyled } from '../Buttons/Button.styles';
 import { ButtonsMobile, Header, NavMenu, WrapperLogo } from './Nav.styles';
 
 const Nav = ({ navMobile }) => {
+  const { user } = useContext(UserAuthContext);
   return (
     <Header navMobile={navMobile}>
       <Link to="/home">
@@ -38,17 +41,20 @@ const Nav = ({ navMobile }) => {
               <ButtonStyled>Account</ButtonStyled>
             </Link>
           </li>
-
-          <ButtonsMobile>
-            <Link to="/signin">
-              <ButtonStyled>Sign In</ButtonStyled>
-            </Link>
-          </ButtonsMobile>
-          <ButtonsMobile>
-            <Link to="/signup">
-              <ButtonStyled>Sign Up</ButtonStyled>
-            </Link>
-          </ButtonsMobile>
+          {!user && (
+            <>
+              <ButtonsMobile>
+                <Link to="/signin">
+                  <ButtonStyled>Sign In</ButtonStyled>
+                </Link>
+              </ButtonsMobile>
+              <ButtonsMobile>
+                <Link to="/signup">
+                  <ButtonStyled>Sign Up</ButtonStyled>
+                </Link>
+              </ButtonsMobile>
+            </>
+          )}
         </ul>
       </NavMenu>
     </Header>

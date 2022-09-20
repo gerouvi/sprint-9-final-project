@@ -1,29 +1,22 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { signInWithEmailAndPasswordFunction } from '../../lib/firebase/firebase-auth';
+import { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
+import useSignIn from '../../lib/hooks/useSignIn';
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
 import { InputStyled } from '../Form/InputStyled';
 import { LinkText, Wrapper } from './SignIn.styles';
 
 const SignIn = () => {
   console.log('signin');
-  const [credentialsUser, setCredentialsUser] = useState({
-    email: '',
-    password: '',
-    error: undefined,
-  });
 
-  const handleSignInWithEmailAndPassword = async () => {
-    setCredentialsUser((prev) => ({ ...prev, error: undefined }));
-    try {
-      await signInWithEmailAndPasswordFunction(
-        credentialsUser.email,
-        credentialsUser.password
-      );
-    } catch (err) {
-      setCredentialsUser((prev) => ({ ...prev, error: err.message }));
-    }
-  };
+  const { user } = useContext(UserAuthContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) navigate('/account');
+  }, [user, navigate]);
+
+  const { credentialsUser, handleFieldChange, signInSubmit } = useSignIn();
+
   return (
     <>
       <Wrapper>
@@ -32,8 +25,7 @@ const SignIn = () => {
           onSubmit={(e) => {
             e.preventDefault();
             localStorage.setItem('emailMemoWords', credentialsUser.email);
-
-            handleSignInWithEmailAndPassword();
+            signInSubmit();
           }}
         >
           <div>
@@ -41,12 +33,7 @@ const SignIn = () => {
             <InputStyled
               value={credentialsUser.email}
               type="email"
-              onChange={(e) =>
-                setCredentialsUser((prev) => ({
-                  ...prev,
-                  email: e.target.value,
-                }))
-              }
+              onChange={(e) => handleFieldChange('email', e.target.value)}
             />
           </div>
           <div>
@@ -54,12 +41,7 @@ const SignIn = () => {
             <InputStyled
               value={credentialsUser.password}
               type="password"
-              onChange={(e) =>
-                setCredentialsUser((prev) => ({
-                  ...prev,
-                  password: e.target.value,
-                }))
-              }
+              onChange={(e) => handleFieldChange('password', e.target.value)}
             />
           </div>
           <ButtonRoundedStyled
