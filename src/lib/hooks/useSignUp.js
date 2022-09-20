@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { errorString } from '../Extras/errorString';
 import {
   createUserWithEmailAndPasswordFunction,
   sendEmailVerificationFunction,
@@ -24,7 +25,8 @@ const useSignUp = () => {
       );
       await sendEmailVerificationFunction();
     } catch (err) {
-      setCredentialsUser((prev) => ({ ...prev, error: err.message }));
+      const strError = errorString(err.code);
+      setCredentialsUser((prev) => ({ ...prev, error: strError }));
     }
   };
 

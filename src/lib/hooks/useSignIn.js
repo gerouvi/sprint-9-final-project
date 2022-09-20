@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { errorString } from '../Extras/errorString';
 import { signInWithEmailAndPasswordFunction } from '../firebase/firebase-auth';
 
 const useSignIn = () => {
@@ -20,7 +21,9 @@ const useSignIn = () => {
         credentialsUser.password
       );
     } catch (err) {
-      setCredentialsUser((prev) => ({ ...prev, error: err.message }));
+      console.log(err.code);
+      const strError = errorString(err.code);
+      setCredentialsUser((prev) => ({ ...prev, error: strError }));
     }
   };
 

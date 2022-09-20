@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import useSignIn from '../../lib/hooks/useSignIn';
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
+import { ErrorTextStyled } from '../Extras/ErrorText.styles';
 import { InputStyled } from '../Form/InputStyled';
 import { LinkText, Wrapper } from './SignIn.styles';
 
@@ -44,6 +45,9 @@ const SignIn = () => {
               onChange={(e) => handleFieldChange('password', e.target.value)}
             />
           </div>
+          {credentialsUser.error && (
+            <ErrorTextStyled>{credentialsUser.error}</ErrorTextStyled>
+          )}
           <ButtonRoundedStyled
             disabled={!credentialsUser.email || !credentialsUser.password}
           >
