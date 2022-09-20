@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import bg from '../../assets/images/bg.png';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import { ButtonStyled } from '../Buttons/Button.styles';
-import { ButtonSignOutStyled } from '../Buttons/ButtonSingOut.styles';
+import ButtonSignOut from '../Buttons/ButtonSignOut';
 import Nav from '../Nav/Nav';
 
 import { Wrapper, WrapperButtonVerifyEmail } from './WrapperPage.styles';
@@ -14,7 +14,7 @@ const WrapperPage = ({ navMobile, children }) => {
     <>
       {
         <Wrapper bg={bg}>
-          {user && <ButtonSignOutStyled />}
+          {user && <ButtonSignOut />}
           {user && !user.emailVerified ? (
             <WrapperButtonVerifyEmail>
               <h1>
