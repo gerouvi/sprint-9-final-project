@@ -15,6 +15,7 @@ import UnLockMobile from './UnLockMobile';
 
 const MobileFrame = () => {
   const [isLocked, setIsLocked] = useState(false);
+
   return (
     <MobileDevice>
       <Top>

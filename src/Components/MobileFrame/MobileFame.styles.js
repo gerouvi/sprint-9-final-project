@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Aa = styled.div`
+  background-color: ${({ color }) => console.log(color)};
+`;
+
 export const MobileDevice = styled.div`
   position: relative;
   margin-top: 30px;

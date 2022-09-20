@@ -1,9 +1,42 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import bg from '../../assets/images/bg.png';
-import { Wrapper } from './WrapperPage.styles';
+import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
+import { ButtonStyled } from '../Buttons/Button.styles';
+import { ButtonSignOutStyled } from '../Buttons/ButtonSingOut.styles';
+import Nav from '../Nav/Nav';
 
-const WrapperPage = ({ children }) => {
-  const pathName = window.location.pathname;
-  return <>{pathName !== '/' && <Wrapper bg={bg}>{children}</Wrapper>}</>;
+import { Wrapper, WrapperButtonVerifyEmail } from './WrapperPage.styles';
+
+const WrapperPage = ({ navMobile, children }) => {
+  const { user } = useContext(UserAuthContext);
+  return (
+    <>
+      {
+        <Wrapper bg={bg}>
+          {user && <ButtonSignOutStyled />}
+          {user && !user.emailVerified ? (
+            <WrapperButtonVerifyEmail>
+              <h1>
+                Click when you have had verified your email, it can be in your
+                spams!
+              </h1>
+              <Link to="/account">
+                <ButtonStyled onClick={() => window.location.reload()}>
+                  Click!
+                </ButtonStyled>
+              </Link>
+            </WrapperButtonVerifyEmail>
+          ) : (
+            <>
+              <Nav navMobile={navMobile} />
+              {children}
+            </>
+          )}
+        </Wrapper>
+      }
+    </>
+  );
 };
 
 export default WrapperPage;

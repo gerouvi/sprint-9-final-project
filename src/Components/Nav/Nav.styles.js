@@ -3,6 +3,7 @@ import { THEME_STYLES } from '../../styles/THEME_STYLES';
 
 export const Header = styled.header`
   poisiton: relative;
+  display: ${({ navMobile }) => (navMobile ? 'block' : 'none')};
 
   @media screen and (min-width: ${THEME_STYLES.MEDIA_QUERYS.DESKTOP}px) {
     padding: 0 40px;
@@ -10,8 +11,6 @@ export const Header = styled.header`
     justify-content: space-between;
     align-items: center;
   }
-
-  display: ${({ displayNone }) => displayNone && 'none'};
 `;
 
 export const NavMenu = styled.nav`
@@ -27,7 +26,6 @@ export const NavMenu = styled.nav`
     justify-content: start;
     align-items: center;
     gap: 20px;
-    height: 80vh;
 
     @media screen and (min-width: ${THEME_STYLES.MEDIA_QUERYS.DESKTOP}px) {
       flex-direction: row;
@@ -58,7 +56,7 @@ export const WrapperLogo = styled.div`
   height: 180px;
   width: 180px;
 
-  @media screen and (min-width: ${THEME_STYLES.MOBILE_SIZE}px) {
+  @media screen and (min-width: ${THEME_STYLES.MEDIA_QUERYS.DESKTOP}px) {
     margin-left: initial;
     margin-right: initial;
     top: 0px;
@@ -83,4 +81,10 @@ export const LogOutButton = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+`;
+
+export const ButtonsMobile = styled.li`
+  @media screen and (min-width: ${THEME_STYLES.MEDIA_QUERYS.DESKTOP}px) {
+    display: none;
+  }
 `;

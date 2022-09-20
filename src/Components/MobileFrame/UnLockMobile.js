@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import bgScreen from '../../assets/images/bgiphone.jpg';
 import logoMemoWords from '../../assets/images/memowords.jpg';
 import {
@@ -42,7 +43,9 @@ const UnLockMobile = () => {
       </Battery>
       <Signal />
       <LogoWrapper>
-        <LogoApp src={logoMemoWords} />
+        <Link to="/home">
+          <LogoApp src={logoMemoWords} />
+        </Link>
       </LogoWrapper>
     </ScreenOn>
   );

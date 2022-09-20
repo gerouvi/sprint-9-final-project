@@ -1,18 +1,12 @@
 import { Link } from 'react-router-dom';
 import logoMemoWords from '../../assets/images/memoWordsTr.png';
-import { THEME_STYLES } from '../../styles/THEME_STYLES';
-import { ButtonStyled } from '../Buttons/ButtonStyled';
-import { Header, NavMenu, WrapperLogo } from './Nav.styles';
+import { ButtonStyled } from '../Buttons/Button.styles';
+import { ButtonsMobile, Header, NavMenu, WrapperLogo } from './Nav.styles';
 
-const Nav = () => {
+const Nav = ({ navMobile }) => {
   return (
-    <Header
-      displayNone={
-        window.screen.width <= THEME_STYLES.MEDIA_QUERYS.DESKTOP &&
-        window.location.pathname !== '/home'
-      }
-    >
-      <Link to="/">
+    <Header navMobile={navMobile}>
+      <Link to="/home">
         <WrapperLogo>
           <img src={logoMemoWords} alt="logo memo words" />
         </WrapperLogo>
@@ -39,23 +33,22 @@ const Nav = () => {
               <ButtonStyled>Games</ButtonStyled>
             </Link>
           </li>
-          {/* {(user || window.screen.availWidth <= THEME_STYLES.MOBILE_SIZE) && (
-            <li>
-              <Link to="/account">
-                <ButtonStyled>Account</ButtonStyled>
-              </Link>
-            </li>
-          )}
-          {user && window.screen.availWidth >= THEME_STYLES.TABLET_SIZE && (
-            <li>
-              <Link to="/">
-                <LogOutButton
-                  logoLogOut={logoLogOut}
-                  onClick={signOutFunction}
-                />
-              </Link>
-            </li>
-          )} */}
+          <li>
+            <Link to="/account">
+              <ButtonStyled>Account</ButtonStyled>
+            </Link>
+          </li>
+
+          <ButtonsMobile>
+            <Link to="/signin">
+              <ButtonStyled>Sign In</ButtonStyled>
+            </Link>
+          </ButtonsMobile>
+          <ButtonsMobile>
+            <Link to="/signup">
+              <ButtonStyled>Sign Up</ButtonStyled>
+            </Link>
+          </ButtonsMobile>
         </ul>
       </NavMenu>
     </Header>

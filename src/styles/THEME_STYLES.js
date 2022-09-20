@@ -5,6 +5,7 @@ export const THEME_STYLES = {
     BG_SCREEN_OFF: '#111;',
     GRAY: '#2c2b2b',
     WHITE: '#fff',
+    RED: 'red',
   },
   BORDER_RADIUS: {
     SCREEN_MOBILE: '23px',
@@ -14,6 +15,6 @@ export const THEME_STYLES = {
     SM: '0.5rem',
   },
   MEDIA_QUERYS: {
-    DESKTOP: '880',
+    DESKTOP: '900',
   },
 };
