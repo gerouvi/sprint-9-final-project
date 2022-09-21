@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import useSignUp from '../../lib/hooks/useSignUp';
+import { ButtonGoBackStyled } from '../Buttons/ButtonGoBack.styles';
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
 import { ErrorTextStyled } from '../Extras/ErrorText.styles';
 import { InputStyled } from '../Form/InputStyled';
@@ -16,11 +17,12 @@ const SignUp = () => {
     if (user) navigate('/account');
   }, [user, navigate]);
 
-  const { credentialsUser, handleFieldChange, signUpSubmit } = useSignUp();
+  const { signUp, handleFieldSignUpChange, signUpSubmit } = useSignUp();
 
   return (
     <>
       <Wrapper>
+        <ButtonGoBackStyled />
         <h1>Sign up</h1>
         <form
           onSubmit={(e) => {
@@ -31,25 +33,23 @@ const SignUp = () => {
           <div>
             <label>Email:</label>
             <InputStyled
-              value={credentialsUser.email}
+              value={signUp.email}
               type="email"
-              onChange={(e) => handleFieldChange('email', e.target.value)}
+              onChange={(e) => handleFieldSignUpChange('email', e.target.value)}
             />
           </div>
           <div>
             <label>Password:</label>
             <InputStyled
-              value={credentialsUser.password}
+              value={signUp.password}
               type="password"
-              onChange={(e) => handleFieldChange('password', e.target.value)}
+              onChange={(e) =>
+                handleFieldSignUpChange('password', e.target.value)
+              }
             />
           </div>
-          {credentialsUser.error && (
-            <ErrorTextStyled>{credentialsUser.error}</ErrorTextStyled>
-          )}
-          <ButtonRoundedStyled
-            disabled={!credentialsUser.email || !credentialsUser.password}
-          >
+          {signUp.error && <ErrorTextStyled>{signUp.error}</ErrorTextStyled>}
+          <ButtonRoundedStyled disabled={!signUp.email || !signUp.password}>
             Go!
           </ButtonRoundedStyled>
         </form>

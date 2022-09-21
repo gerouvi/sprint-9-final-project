@@ -3,33 +3,30 @@ import { errorString } from '../Extras/errorString';
 import { signInWithEmailAndPasswordFunction } from '../firebase/firebase-auth';
 
 const useSignIn = () => {
-  const [credentialsUser, setCredentialsUser] = useState({
+  const [signIn, setSignIn] = useState({
     email: '',
     password: '',
     error: undefined,
   });
 
-  const handleFieldChange = (key, value) => {
-    setCredentialsUser((prev) => ({ ...prev, [key]: value }));
+  const handleFieldSignInChange = (key, value) => {
+    setSignIn((prev) => ({ ...prev, [key]: value }));
   };
 
   const signInSubmit = async () => {
-    setCredentialsUser((prev) => ({ ...prev, error: undefined }));
+    setSignIn((prev) => ({ ...prev, error: undefined }));
     try {
-      await signInWithEmailAndPasswordFunction(
-        credentialsUser.email,
-        credentialsUser.password
-      );
+      await signInWithEmailAndPasswordFunction(signIn.email, signIn.password);
     } catch (err) {
       console.log(err.code);
       const strError = errorString(err.code);
-      setCredentialsUser((prev) => ({ ...prev, error: strError }));
+      setSignIn((prev) => ({ ...prev, error: strError }));
     }
   };
 
   return {
-    credentialsUser,
-    handleFieldChange,
+    signIn,
+    handleFieldSignInChange,
     signInSubmit,
   };
 };

@@ -6,6 +6,7 @@ export const THEME_STYLES = {
     GRAY: '#2c2b2b',
     WHITE: '#fff',
     RED: 'red',
+    GREEN: 'green',
   },
   BORDER_RADIUS: {
     SCREEN_MOBILE: '23px',

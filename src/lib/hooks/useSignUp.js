@@ -6,33 +6,33 @@ import {
 } from '../firebase/firebase-auth';
 
 const useSignUp = () => {
-  const [credentialsUser, setCredentialsUser] = useState({
+  const [signUp, setSignUp] = useState({
     email: '',
     password: '',
     error: undefined,
   });
 
-  const handleFieldChange = (key, value) => {
-    setCredentialsUser((prev) => ({ ...prev, [key]: value }));
+  const handleFieldSignUpChange = (key, value) => {
+    setSignUp((prev) => ({ ...prev, [key]: value }));
   };
 
   const signUpSubmit = async () => {
-    setCredentialsUser((prev) => ({ ...prev, error: undefined }));
+    setSignUp((prev) => ({ ...prev, error: undefined }));
     try {
       await createUserWithEmailAndPasswordFunction(
-        credentialsUser.email,
-        credentialsUser.password
+        signUp.email,
+        signUp.password
       );
       await sendEmailVerificationFunction();
     } catch (err) {
       const strError = errorString(err.code);
-      setCredentialsUser((prev) => ({ ...prev, error: strError }));
+      setSignUp((prev) => ({ ...prev, error: strError }));
     }
   };
 
   return {
-    credentialsUser,
-    handleFieldChange,
+    signUp,
+    handleFieldSignUpChange,
     signUpSubmit,
   };
 };
