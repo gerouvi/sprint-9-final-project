@@ -1,9 +1,9 @@
 import { signOutFunction } from '../../lib/firebase/firebase-auth';
 import bg from '../../assets/images/logout.png';
-import { Button } from './ButtonSingOut.styles';
+import { ButtonSignOutStyled } from './ButtonSingOut.styles';
 
-const ButtonSignOut = (props) => {
-  return <Button bg={bg} {...props} onClick={() => signOutFunction()} />;
-};
+const ButtonSignOut = (props) => (
+  <ButtonSignOutStyled bg={bg} {...props} onClick={() => signOutFunction()} />
+);
 
 export default ButtonSignOut;

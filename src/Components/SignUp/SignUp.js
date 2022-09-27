@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import useSignUp from '../../lib/hooks/useSignUp';
-import { ButtonGoBackStyled } from '../Buttons/ButtonGoBack.styles';
+import ButtonGoBack from '../Buttons/ButtonGoBack';
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
 import { ErrorTextStyled } from '../Extras/ErrorText.styles';
 import { InputStyled } from '../Form/InputStyled';
@@ -22,7 +22,7 @@ const SignUp = () => {
   return (
     <>
       <Wrapper>
-        <ButtonGoBackStyled />
+        <ButtonGoBack pathName="/home" />
         <h1>Sign up</h1>
         <form
           onSubmit={(e) => {

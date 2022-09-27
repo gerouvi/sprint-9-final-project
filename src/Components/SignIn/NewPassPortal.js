@@ -4,7 +4,7 @@ import { PortaMessageStyled } from '../Extras/PortalMessageStyled';
 import { InputStyled } from '../Form/InputStyled';
 import { Form } from './NewPassPortal.styles';
 
-const FormNewPassPortal = ({
+const NewPassPortal = ({
   newPassPortal,
   handleFieldNewPassPortalChanged,
   newPassSubmit,
@@ -38,19 +38,13 @@ const FormNewPassPortal = ({
           </Form>
         </>
       )}
-      {newPassPortal.error && (
+
+      {(newPassPortal.error || newPassPortal.messageSuccess) && (
         <PortaMessageStyled>
-          <p>{newPassPortal.error}</p>
-          <ButtonStyled
-            onClick={(e) => handleFieldNewPassPortalChanged('isOpen', false)}
-          >
-            Ok
-          </ButtonStyled>
-        </PortaMessageStyled>
-      )}
-      {newPassPortal.messageSuccess && (
-        <PortaMessageStyled>
-          <p>{newPassPortal.messageSuccess}</p>
+          <p>
+            {newPassPortal.error}
+            {newPassPortal.messageSuccess}
+          </p>
           <ButtonStyled
             onClick={(e) => handleFieldNewPassPortalChanged('isOpen', false)}
           >
@@ -62,4 +56,4 @@ const FormNewPassPortal = ({
   );
 };
 
-export default FormNewPassPortal;
+export default NewPassPortal;

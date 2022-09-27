@@ -1,7 +1,7 @@
 export const errorString = (code) => {
   switch (code) {
     case 'auth/weak-password':
-      return 'hePassword short, at least 6 charactersllo';
+      return 'Password short, at least 6 characters';
     case 'auth/email-already-in-use':
       return 'Email already in use';
     case 'auth/wrong-password':

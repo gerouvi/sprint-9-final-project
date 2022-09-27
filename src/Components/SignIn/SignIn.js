@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 import useNewPassPortal from '../../lib/hooks/useNewPassPortal';
 import useSignIn from '../../lib/hooks/useSignIn';
+import ButtonGoBack from '../Buttons/ButtonGoBack';
+
 import { ButtonRoundedStyled } from '../Buttons/ButtonRounded.styles';
 import { ErrorTextStyled } from '../Extras/ErrorText.styles';
 import { InputStyled } from '../Form/InputStyled';
 import Portal from '../Portals/Portal';
-import FormNewPassword from './NewPassPortal';
+import NewPassPortal from './NewPassPortal';
 import { LinkText, Wrapper } from './SignIn.styles';
 
 const SignIn = () => {
@@ -27,6 +29,7 @@ const SignIn = () => {
   return (
     <>
       <Wrapper>
+        <ButtonGoBack pathName="/home" />
         <h1>Sign In</h1>
         <form
           onSubmit={(e) => {
@@ -69,7 +72,7 @@ const SignIn = () => {
           <LinkText>Don't you have an account? Sing Up!</LinkText>
         </Link>
         <Portal isOpen={newPassPortal.isOpen}>
-          <FormNewPassword
+          <NewPassPortal
             newPassPortal={newPassPortal}
             handleFieldNewPassPortalChanged={handleFieldNewPassPortalChanged}
             newPassSubmit={newPassSubmit}

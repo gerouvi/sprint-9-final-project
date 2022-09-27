@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const ButtonSignOutStyled = styled.button`
   display: inline-block;
   width: 30px;
   height: 30px;

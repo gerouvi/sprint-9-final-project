@@ -9,7 +9,6 @@ const CustomUserAuthProvider = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      console.log('currentUser changed', currentUser);
       setUser(currentUser);
     });
   }, []);

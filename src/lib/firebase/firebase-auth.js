@@ -1,14 +1,21 @@
-import { auth, db } from './firebase-config';
+import { auth } from './firebase-config';
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  updateEmail,
+  updatePassword,
 } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 
 //Auth
+
+export const getUid = () => {
+  return auth.currentUser.uid;
+};
 
 export const createUserWithEmailAndPasswordFunction = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -28,4 +35,20 @@ export const signOutFunction = () => {
 
 export const sendPasswordResetEmailFunction = (email) => {
   return sendPasswordResetEmail(auth, email);
+};
+
+export const reauthenticateWithCredentialFunction = (password) => {
+  const credential = EmailAuthProvider.credential(
+    auth.currentUser.email,
+    password
+  );
+  return reauthenticateWithCredential(auth.currentUser, credential);
+};
+
+export const updateEmailFunction = (newEmail) => {
+  return updateEmail(auth.currentUser, newEmail);
+};
+
+export const updatePasswordFunction = (newPassword) => {
+  return updatePassword(auth.currentUser, newPassword);
 };
