@@ -5,14 +5,7 @@ import {
   getServerTimestamp,
   setDocFunction,
 } from '../firebase/firebase-firestore';
-
-const sortAndStringLanguages = (option1, option2) => {
-  const optionsSorted = [];
-  optionsSorted.push(option1);
-  optionsSorted.push(option2);
-  optionsSorted.sort();
-  return optionsSorted[0] + '-' + optionsSorted[1];
-};
+import { handlerSortAndStringOptions } from './handlerSortAndStringOptions';
 
 //Update options select
 const updateLanguagesResum = async (option1, option2) => {
@@ -32,7 +25,7 @@ const updateLanguagesResum = async (option1, option2) => {
 const postUpdatedLanguagesResum = (doc, option1, option2) => {
   let languagesResum = [];
 
-  const newPairOfLanguages = sortAndStringLanguages(option1, option2);
+  const newPairOfLanguages = handlerSortAndStringOptions(option1, option2);
 
   if (doc.data()) languagesResum = doc.data().languagesResum;
 
@@ -48,9 +41,9 @@ export const handleAddWords = async (
   word2,
   option1,
   option2,
-  handleResetFieldsTranslate
+  handleResetFields
 ) => {
-  const languagesCollectionName = sortAndStringLanguages(option1, option2);
+  const languagesCollectionName = handlerSortAndStringOptions(option1, option2);
   const uid = getUid();
   const path = `users/${uid}/${languagesCollectionName}`;
 
@@ -63,7 +56,7 @@ export const handleAddWords = async (
       selectedForGames: false,
     });
     updateLanguagesResum(option1, option2);
-    handleResetFieldsTranslate();
+    handleResetFields();
   } catch (err) {
     console.log(err.message);
   }

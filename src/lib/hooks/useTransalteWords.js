@@ -1,6 +1,5 @@
+import { useState } from 'react';
 import { LANGUAGES_OPTIONS } from '../constants/langaugesOptions';
-
-const { useState } = require('react');
 
 const getInitialValuesTranslateWords = () => ({
   option1: localStorage.getItem('translateOpt1') || 'english',
@@ -24,7 +23,7 @@ const useTranslateWords = () => {
     setTranslateWords(getInitialValuesTranslateWords());
   };
 
-  const wordsSubmit = async () => {
+  const translateWordsFetch = async () => {
     const codeOpt1 = LANGUAGES_OPTIONS.filter(
       (language) => language.name === translateWords.option1
     )[0].code;
@@ -54,7 +53,7 @@ const useTranslateWords = () => {
     translateWords,
     handleFieldsTranslateWordsChanged,
     handleResetFieldsTranslate,
-    wordsSubmit,
+    translateWordsFetch,
   };
 };
 

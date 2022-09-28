@@ -14,7 +14,7 @@ const Translate = () => {
     translateWords,
     handleFieldsTranslateWordsChanged,
     handleResetFieldsTranslate,
-    wordsSubmit,
+    translateWordsFetch,
   } = useTranslateWords();
   return (
     <>
@@ -24,8 +24,7 @@ const Translate = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            wordsSubmit();
-            if (!translateWords.word2) wordsSubmit();
+            if (!translateWords.word2) translateWordsFetch();
             else {
               handleAddWords(
                 translateWords.word1,
@@ -41,7 +40,7 @@ const Translate = () => {
             value={translateWords.option1}
             onChange={(e) => {
               handleFieldsTranslateWordsChanged('option1', e.target.value);
-              localStorage.setItem('option1', e.target.value);
+              localStorage.setItem('translateOpt1', e.target.value);
             }}
           >
             {LANGUAGES_OPTIONS.map((language, index) => (
@@ -60,7 +59,7 @@ const Translate = () => {
             value={translateWords.option2}
             onChange={(e) => {
               handleFieldsTranslateWordsChanged('option2', e.target.value);
-              localStorage.setItem('option2', e.target.value);
+              localStorage.setItem('translateOpt2', e.target.value);
             }}
           >
             {LANGUAGES_OPTIONS.map((language, index) => (

@@ -34,3 +34,14 @@ export const setDocFunction = (path, newDoc) => {
   const docRef = doc(db, 'users', path);
   return setDoc(docRef, newDoc);
 };
+
+export const getWordsListDocsLimit = (path, option1, last, lim) => {
+  const q = query(
+    collection(db, path),
+    orderBy(option1, 'asc'),
+    startAfter(last),
+    limit(lim)
+  );
+
+  return getDocs(q);
+};
