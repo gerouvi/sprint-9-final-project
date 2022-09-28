@@ -4,7 +4,7 @@ import { getWordsListDocsLimit } from '../firebase/firebase-firestore';
 import { handlerSortAndStringOptions } from '../handlers/handlerSortAndStringOptions';
 
 const useWordsList = () => {
-  const [listOfWords, setListOfWords] = useState([]);
+  const [list, setList] = useState([]);
 
   const [moreWords, setMoreWords] = useState(0);
 
@@ -31,8 +31,8 @@ const useWordsList = () => {
 
       const docs = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 
-      if (lastItem.current === 0) setListOfWords(docs);
-      else setListOfWords((prev) => [...prev, ...docs]);
+      if (lastItem.current === 0) setList(docs);
+      else setList((prev) => [...prev, ...docs]);
 
       lastItem.current = data.docs[data.docs.length - 1];
     } catch (err) {
@@ -41,8 +41,8 @@ const useWordsList = () => {
   };
 
   return {
-    listOfWords,
-    setListOfWords,
+    list,
+    setList,
     moreWords,
     setMoreWords,
     lastItem,

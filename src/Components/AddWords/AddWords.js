@@ -69,7 +69,7 @@ const AddWords = () => {
               handleFieldAddWordsChanged('word2', e.target.value)
             }
           />
-          <ButtonStyled>Add Words'</ButtonStyled>
+          <ButtonStyled>Add Words</ButtonStyled>
           {(addWords.word1 || addWords.word2) && (
             <ButtonStyled
               onClick={() => handleResetFieldsAddWords()}
