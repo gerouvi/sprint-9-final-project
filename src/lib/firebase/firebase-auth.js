@@ -9,6 +9,7 @@ import {
   EmailAuthProvider,
   updateEmail,
   updatePassword,
+  deleteUser,
 } from 'firebase/auth';
 
 //Auth
@@ -51,4 +52,8 @@ export const updateEmailFunction = (newEmail) => {
 
 export const updatePasswordFunction = (newPassword) => {
   return updatePassword(auth.currentUser, newPassword);
+};
+
+export const deleteUserFunction = () => {
+  return deleteUser(auth.currentUser);
 };

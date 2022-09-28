@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { handlerDeleteCollectionsAndSubcollection } from '../../lib/handlers/handlerDeleteCollectionsAndSubcollections';
+import { handlerDeleteUserAccount } from '../../lib/handlers/handlerDeleteUserAccount';
 import useConfirmPassPortal from '../../lib/hooks/useConfirmPassPortal';
 import { THEME_STYLES } from '../../styles/THEME_STYLES';
 import { ButtonStyled } from '../Buttons/Button.styles';
@@ -8,20 +10,21 @@ import ConfirmPassPortal from './ConfirmPassPortal';
 const ButtonDeleteAccount = (props) => {
   const {
     confirmPassPortal,
-    handleConfirmPassPotalFieldChanged,
+    handleConfirmPassPortalFieldChanged,
     confirmPassSubmit,
   } = useConfirmPassPortal();
 
-  const [deleteAccount, setDeleteAccount] = useState({
-    error: '',
-    messageSuccess: '',
-  });
+  const [deleteAccountMessage, setDeleteAccountMessage] = useState('');
 
-  const deleteAccountSubmit = () => {};
+  const deleteAccountSubmit = () => {
+    handlerDeleteCollectionsAndSubcollection();
+    handlerDeleteUserAccount();
+    handleConfirmPassPortalFieldChanged('isOpen', false);
+  };
   return (
     <>
       <ButtonStyled
-        onClick={() => handleConfirmPassPotalFieldChanged('isOpen', true)}
+        onClick={() => handleConfirmPassPortalFieldChanged('isOpen', true)}
         color={THEME_STYLES.COLORS.RED}
         {...props}
       >
@@ -30,13 +33,12 @@ const ButtonDeleteAccount = (props) => {
       <Portal isOpen={confirmPassPortal.isOpen}>
         <ConfirmPassPortal
           confirmPassPortal={confirmPassPortal}
-          handleConfirmPassPotalFieldChanged={
-            handleConfirmPassPotalFieldChanged
+          handleConfirmPassPortalFieldChanged={
+            handleConfirmPassPortalFieldChanged
           }
           confirmPassSubmit={confirmPassSubmit}
           triggerNextFunction={() => deleteAccountSubmit()}
-          messageSuccessNextFunction={deleteAccount.messageSuccess}
-          messageErrorNextFunction={deleteAccount.error}
+          messageErrorNextFunction={deleteAccountMessage}
         />
       </Portal>
     </>
@@ -44,30 +46,3 @@ const ButtonDeleteAccount = (props) => {
 };
 
 export default ButtonDeleteAccount;
-
-// import { THEME_STYLES } from '../../styles/THEME_STYLES';
-// import { ButtonStyled } from '../Buttons/Button.styles';
-
-// const ButtonDeleteAccount = ({
-//   handleConfirmPassPotalFieldChanged,
-//   ...props
-// }) => {
-//   const deleteAccountSubmit = () => {};
-//   return (
-//     <>
-//       <ButtonStyled
-//         onClick={() =>
-//           handleConfirmPassPotalFieldChanged('isOpen', true, () =>
-//             deleteAccountSubmit()
-//           )
-//         }
-//         color={THEME_STYLES.COLORS.RED}
-//         {...props}
-//       >
-//         Delete account
-//       </ButtonStyled>
-//     </>
-//   );
-// };
-
-// export default ButtonDeleteAccount;

@@ -15,7 +15,7 @@ const Account = () => {
       <Wrapper>
         <ButtonGoBack pathName="/home" />
         <h1>My Account</h1>
-        <p>{user.email}</p>
+        {user && <p>{user.email}</p>}
         <WrapperForms>
           <ChangeEmailForm />
           <ChangePassForm />

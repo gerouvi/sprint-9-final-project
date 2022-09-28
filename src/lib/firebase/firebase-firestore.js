@@ -71,3 +71,8 @@ export const getDocsFunction = (path) => {
   const collectionRef = collection(db, path);
   return getDocs(collectionRef);
 };
+
+export const deletDocsFunction = (path) => {
+  const docRef = doc(db, 'users', path);
+  return deleteDoc(docRef);
+};
