@@ -12,6 +12,8 @@ import Games from './Components/Games/Games';
 import SignIn from './Components/SignIn/SignIn';
 import SignUp from './Components/SignUp/SignUp';
 import Wrappers from './Components/Wrappers/Wrappers';
+import GameClassic from './Components/Games/GameClassic/GameClassic';
+import GameSnake from './Components/Games/GameSnake/GameSnake';
 
 function App() {
   return (
@@ -81,6 +83,22 @@ function App() {
             element={
               <Wrappers>
                 <SignUp />
+              </Wrappers>
+            }
+          />
+          <Route
+            path="games/classic/:option1/:option2/:selectedForGames"
+            element={
+              <Wrappers>
+                <GameClassic />
+              </Wrappers>
+            }
+          />
+          <Route
+            path="games/snake/:option1/:option2/:selectedForGames"
+            element={
+              <Wrappers>
+                <GameSnake />
               </Wrappers>
             }
           />

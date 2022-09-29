@@ -3,11 +3,11 @@ import { errorString } from '../Extras/errorString';
 import { getUid } from '../firebase/firebase-auth';
 import { getDocFunction } from '../firebase/firebase-firestore';
 
-const useWordsListOptionsSelect = () => {
+const useOptionsSelectFiltered = (valueLocalStorage) => {
   const [optionsSelect, setOptionsSelect] = useState({
     allOptions: [],
-    option1: localStorage.getItem('wordsListOpt1') || undefined,
-    option2: localStorage.getItem('wordsListOpt2') || undefined,
+    option1: localStorage.getItem(`${valueLocalStorage}1`) || undefined,
+    option2: localStorage.getItem(`${valueLocalStorage}2`) || undefined,
     error: null,
   });
 
@@ -42,8 +42,8 @@ const useWordsListOptionsSelect = () => {
 
       optionsFiltered.sort();
 
-      const option1LocalStorage = localStorage.getItem('wordsListOpt1');
-      const option2LocalStorage = localStorage.getItem('wordsListOpt2');
+      const option1LocalStorage = localStorage.getItem(`${valueLocalStorage}1`);
+      const option2LocalStorage = localStorage.getItem(`${valueLocalStorage}2`);
 
       setAllOptionsSelect(
         optionsFiltered,
@@ -66,4 +66,4 @@ const useWordsListOptionsSelect = () => {
   };
 };
 
-export default useWordsListOptionsSelect;
+export default useOptionsSelectFiltered;

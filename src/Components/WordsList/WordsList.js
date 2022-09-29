@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+
+import useOptionsSelectFiltered from '../../lib/hooks/useOptionsSelectFiltered';
 import useWordsList from '../../lib/hooks/useWordsList';
-import useWordsListOptionsSelect from '../../lib/hooks/useWordsListOptionsSelect';
+
 import ButtonGoBack from '../Buttons/ButtonGoBack';
 import List from './List';
 import { Wrapper } from './WordsList.styles';
@@ -12,7 +14,7 @@ const WordsList = () => {
     setOption1Select,
     setOption2Select,
     handlerGetOptionsSelect,
-  } = useWordsListOptionsSelect();
+  } = useOptionsSelectFiltered('wordsListOpt');
 
   const {
     list,

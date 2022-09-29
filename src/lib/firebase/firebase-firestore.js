@@ -76,3 +76,8 @@ export const deletDocsFunction = (path) => {
   const docRef = doc(db, 'users', path);
   return deleteDoc(docRef);
 };
+
+export const getDocsSelectedForGame = (path) => {
+  const q = query(collection(db, path), where('selectedForGames', '==', true));
+  return getDocs(q);
+};
