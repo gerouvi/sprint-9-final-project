@@ -17,7 +17,7 @@ const AddWords = () => {
     <>
       <Wrapper>
         <ButtonGoBack pathName="/home" />
-        <h1>AddWords</h1>;
+        <h1>AddWords</h1>
         <form
           onSubmit={(e) => {
             e.preventDefault();

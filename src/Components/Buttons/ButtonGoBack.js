@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ButtonGoBack = ({ pathName, ...props }) => (
   <Link to={pathName}>
-    <ButtonGoBackStyled bg={bg} {...props} />;
+    <ButtonGoBackStyled bg={bg} {...props} />
   </Link>
 );
 export default ButtonGoBack;

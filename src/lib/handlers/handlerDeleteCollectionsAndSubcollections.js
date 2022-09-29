@@ -2,8 +2,8 @@ import { getUid } from '../firebase/firebase-auth';
 import {
   deletDocsFunction,
   getDocFunction,
+  getDocsFunction,
 } from '../firebase/firebase-firestore';
-import { handlerSortAndStringOptions } from './handlerSortAndStringOptions';
 
 export const handlerDeleteCollectionsAndSubcollection = async () => {
   const uid = getUid();
@@ -11,13 +11,30 @@ export const handlerDeleteCollectionsAndSubcollection = async () => {
     const docUserResums = await getDocFunction(uid);
     const languagesResum = docUserResums.data().languagesResum;
     languagesResum.forEach((pairOfLanguages) => {
-      handlerSortAndStringOptions(uid, pairOfLanguages);
+      getDocsPairOfLanguages(uid, pairOfLanguages);
     });
     deleteDoc(uid);
   } catch (err) {
     console.log(err.message);
   }
 };
+
+const getDocsPairOfLanguages = async (uid, pairOfLanguages) => {
+  try {
+    const docsPairOfLanguages = await getDocsFunction(
+      `users/${uid}/${pairOfLanguages}`
+    );
+
+    const idsDocs = docsPairOfLanguages.docs.map((doc) => ({
+      id: doc.id,
+    }));
+
+    idsDocs.map((id) => deleteDoc(`${uid}/${pairOfLanguages}/${id.id}`));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const deleteDoc = async (path) => {
   try {
     await deletDocsFunction(path);
