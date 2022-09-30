@@ -9,8 +9,6 @@ import { InputStyled } from '../Form/InputStyled';
 import { LinkText, Wrapper } from './SignUp.styles';
 
 const SignUp = () => {
-  console.log('signup');
-
   const { user } = useContext(UserAuthContext);
   const navigate = useNavigate();
   useEffect(() => {

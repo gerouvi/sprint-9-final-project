@@ -7,7 +7,6 @@ import ChangeEmailForm from './ChangeEmailForm';
 import ChangePassForm from './ChangePassForm';
 
 const Account = () => {
-  console.log('account');
   const { user } = useContext(UserAuthContext);
 
   return (

@@ -11,7 +11,6 @@ import { InputStyled } from '../../Form/InputStyled';
 import { Form, Question, Result, Wrapper } from './GameClassic.styles';
 
 const GameClassic = () => {
-  console.log('Classic');
   const { option1, option2, selectedForGames } = useParams();
 
   const { words, handlerGetWordsFilteredGames } = useListWordsGames();

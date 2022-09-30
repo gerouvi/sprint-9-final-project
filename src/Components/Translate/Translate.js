@@ -9,7 +9,6 @@ import { SelectStyled } from '../Form/SelectStyled';
 import { Wrapper } from './Translate.styles';
 
 const Translate = () => {
-  console.log('Translate');
   const {
     translateWords,
     handleFieldsTranslateWordsChanged,

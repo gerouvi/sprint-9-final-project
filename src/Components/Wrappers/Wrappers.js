@@ -3,7 +3,6 @@ import CustomUserAuthProvider from '../Providers/CustomUserAuthProvider';
 import WrapperPage from '../WrapperPage/WrapperPage';
 
 const Wrappers = ({ navMobile, children }) => {
-  console.log('wrapper');
   return (
     <CustomUserAuthProvider>
       <ProtectedRoutes>

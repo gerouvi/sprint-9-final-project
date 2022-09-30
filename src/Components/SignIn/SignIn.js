@@ -13,8 +13,6 @@ import NewPassPortal from './NewPassPortal';
 import { LinkText, Wrapper } from './SignIn.styles';
 
 const SignIn = () => {
-  console.log('signin');
-
   const { user } = useContext(UserAuthContext);
   const navigate = useNavigate();
   useEffect(() => {

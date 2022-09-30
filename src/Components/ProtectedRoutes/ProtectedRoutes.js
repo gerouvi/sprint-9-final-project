@@ -39,7 +39,6 @@ import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
 const PATHNAMES_NO_PROTECTED = ['/home', '/signin', '/signup'];
 
 const ProtectedRoutes = ({ children }) => {
-  console.log('protected routes');
   const { user } = useContext(UserAuthContext);
 
   const navigate = useNavigate();

@@ -14,8 +14,6 @@ const ButtonDeleteAccount = (props) => {
     confirmPassSubmit,
   } = useConfirmPassPortal();
 
-  const [deleteAccountMessage, setDeleteAccountMessage] = useState('');
-
   const deleteAccountSubmit = () => {
     handlerDeleteCollectionsAndSubcollection();
     handlerDeleteUserAccount();
@@ -38,7 +36,6 @@ const ButtonDeleteAccount = (props) => {
           }
           confirmPassSubmit={confirmPassSubmit}
           triggerNextFunction={() => deleteAccountSubmit()}
-          messageErrorNextFunction={deleteAccountMessage}
         />
       </Portal>
     </>

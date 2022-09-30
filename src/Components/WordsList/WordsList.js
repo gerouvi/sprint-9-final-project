@@ -34,7 +34,15 @@ const WordsList = () => {
       handleGetListOfWords(optionsSelect.option1, optionsSelect.option2);
     }
   }, [optionsSelect.option1, optionsSelect.option2, moreWords]);
-
+  console.log(optionsSelect.allOptions.length);
+  if (!optionsSelect.allOptions.length)
+    return (
+      <Wrapper>
+        <ButtonGoBack pathName="/home" />
+        <h1>Words List</h1>
+        <h2>No Words</h2>
+      </Wrapper>
+    );
   return (
     <Wrapper>
       <ButtonGoBack pathName="/home" />

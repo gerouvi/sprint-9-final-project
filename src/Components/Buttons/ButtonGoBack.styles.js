@@ -1,4 +1,4 @@
-import styled, { ThemeConsumer } from 'styled-components';
+import styled from 'styled-components';
 import { THEME_STYLES } from '../../styles/THEME_STYLES';
 
 export const ButtonGoBackStyled = styled.button`

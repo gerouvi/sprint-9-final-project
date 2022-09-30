@@ -6,8 +6,6 @@ import { ButtonStyled } from '../Buttons/Button.styles';
 import { OrderList, TextDescription } from './Home.styles';
 
 const Home = () => {
-  console.log('home');
-
   const { user } = useContext(UserAuthContext);
   return (
     <TextDescription>

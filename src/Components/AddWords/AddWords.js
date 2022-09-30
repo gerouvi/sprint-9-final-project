@@ -9,8 +9,6 @@ import { SelectStyled } from '../Form/SelectStyled';
 import { Wrapper } from './AddWords.styles';
 
 const AddWords = () => {
-  console.log('Add words');
-
   const { addWords, handleFieldAddWordsChanged, handleResetFieldsAddWords } =
     useAddWords();
   return (
