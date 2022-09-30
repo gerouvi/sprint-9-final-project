@@ -8,14 +8,6 @@ export const Wrapper = styled.div`
   gap: 25px;
 
   & h1 {
-    margin-top: 0;
-  }
-
-  & form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+    margin: 0;
   }
 `;

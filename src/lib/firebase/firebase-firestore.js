@@ -52,7 +52,6 @@ export const updateDocFunction = (path, newData) => {
 };
 
 export const getWordsListDocsLimiAfterUpdate = (path, option1, accLimit) => {
-  console.log('b', path, option1, accLimit);
   const q = query(
     collection(db, path),
     orderBy(option1, 'asc'),

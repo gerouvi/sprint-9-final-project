@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 25px;
+
+  & h1 {
+    margin-top: 0;
+  }
 `;
 
 export const Question = styled.p`

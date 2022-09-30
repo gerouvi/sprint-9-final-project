@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import getPairOfWordsGame from '../../../lib/functions/getPairOfWordsGame';
-import useClassicGameOptions from '../../../lib/hooks/useClassicGameOptions';
+import useGameOptions from '../../../lib/hooks/useGameOptions';
 import useListWordsGames from '../../../lib/hooks/useListWordsGames';
+import ButtonGoBack from '../../Buttons/ButtonGoBack';
+import { Wrapper } from './GameSnake.styles';
+
+import GameSnakeField from './GameSnakeField';
 
 const GameSnake = () => {
-  console.log('Snake');
   const { option1, option2, selectedForGames } = useParams();
 
   const { words, handlerGetWordsFilteredGames } = useListWordsGames();
@@ -14,11 +17,10 @@ const GameSnake = () => {
     handlerGetWordsFilteredGames(option1, option2, selectedForGames);
   }, [option1, option2, selectedForGames]);
 
-  const { gameOpt, handlerResult, handlerNewGame, handlerNextGame } =
-    useClassicGameOptions();
+  const { gameOpt, handlerNewGame, handlerNextGame } = useGameOptions();
 
   useEffect(() => {
-    if (words.length) {
+    if (words.length > 1) {
       const {
         question,
         answer,
@@ -26,6 +28,7 @@ const GameSnake = () => {
         correctColorAnswer,
         wrongColorAnswer,
       } = getPairOfWordsGame(words);
+
       handlerNewGame({
         question,
         answer,
@@ -36,14 +39,16 @@ const GameSnake = () => {
     }
   }, [words, gameOpt.nextGame]);
 
-  const [userAnswer, setUserAnswer] = useState('');
-
-  console.log(gameOpt);
   return (
-    <>
+    <Wrapper>
+      <ButtonGoBack pathName="/games" />
       <h1>Snake</h1>
-      <button onClick={handlerNextGame}>Next</button>
-    </>
+      {words.length > 1 ? (
+        <GameSnakeField gameOpt={gameOpt} handlerNextGame={handlerNextGame} />
+      ) : (
+        <h2>Not enough words</h2>
+      )}
+    </Wrapper>
   );
 };
 

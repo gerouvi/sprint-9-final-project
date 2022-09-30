@@ -32,7 +32,9 @@ const useWordsList = () => {
       const docs = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 
       if (lastItem.current === 0) setList(docs);
-      else setList((prev) => [...prev, ...docs]);
+      else {
+        setList((prev) => [...prev, ...docs]);
+      }
 
       lastItem.current = data.docs[data.docs.length - 1];
     } catch (err) {

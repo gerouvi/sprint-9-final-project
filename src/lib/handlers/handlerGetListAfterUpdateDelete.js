@@ -14,7 +14,6 @@ export const handlerGetListAfterUpdateDelete = async (
   const optionsOrder = handlerSortAndStringOptions(option1, option2);
 
   try {
-    console.log('a');
     const data = await getWordsListDocsLimiAfterUpdate(
       `users/${uid}/${optionsOrder}`,
       option1,
@@ -22,8 +21,6 @@ export const handlerGetListAfterUpdateDelete = async (
     );
 
     const docs = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
-    console.log(docs);
 
     setListOfWords(docs);
   } catch (err) {

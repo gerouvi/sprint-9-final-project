@@ -17,13 +17,15 @@ export const handlerDeleteWords = async (
   setWords
 ) => {
   console.log('handleDeleteWords');
+
+  const limit = accLimit < 0 ? 0 : accLimit;
   try {
     const uid = getUid();
     const pairOfLanguages = handlerSortAndStringOptions(option1, option2);
     const path = `${uid}/${pairOfLanguages}/${id}`;
 
     await deleteDocFunction(path);
-    handlerGetListAfterUpdateDelete(option1, option2, accLimit, setWords);
+    handlerGetListAfterUpdateDelete(option1, option2, limit, setWords);
     deleteLanguagesResum(option1, option2);
   } catch (err) {
     console.log(err);

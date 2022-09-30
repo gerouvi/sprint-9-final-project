@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const getInitialValuesClassicGameOptions = () => ({
+const getInitialValuesGameOptions = () => ({
   question: undefined,
   answer: undefined,
   result: undefined,
@@ -10,10 +10,8 @@ const getInitialValuesClassicGameOptions = () => ({
   nextGame: false,
 });
 
-const useClassicGameOptions = () => {
-  const [gameOpt, setGameOpt] = useState(() =>
-    getInitialValuesClassicGameOptions()
-  );
+const useGameOptions = () => {
+  const [gameOpt, setGameOpt] = useState(() => getInitialValuesGameOptions());
 
   const handlerNewGame = ({
     question,
@@ -54,4 +52,4 @@ const useClassicGameOptions = () => {
   };
 };
 
-export default useClassicGameOptions;
+export default useGameOptions;

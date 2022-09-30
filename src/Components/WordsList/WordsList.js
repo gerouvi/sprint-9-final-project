@@ -30,15 +30,10 @@ const WordsList = () => {
   }, []);
 
   useEffect(() => {
-    if (optionsSelect.allOptions.length) {
+    if (optionsSelect.allOptions.length && moreWords !== 0) {
       handleGetListOfWords(optionsSelect.option1, optionsSelect.option2);
     }
-  }, [
-    optionsSelect.allOptions.length,
-    optionsSelect.option1,
-    optionsSelect.option2,
-    moreWords,
-  ]);
+  }, [optionsSelect.option1, optionsSelect.option2, moreWords]);
 
   return (
     <Wrapper>
