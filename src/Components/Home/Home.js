@@ -16,7 +16,7 @@ const Home = () => {
 
       <OrderList>
         <li>
-          You can <span>translate</span> words from any langauge to any language
+          You can <span>translate</span> words from any language to any language
           and add it in your lists
         </li>
         <li>
