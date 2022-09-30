@@ -34,7 +34,7 @@ const WordsList = () => {
       handleGetListOfWords(optionsSelect.option1, optionsSelect.option2);
     }
   }, [optionsSelect.option1, optionsSelect.option2, moreWords]);
-  console.log(optionsSelect.allOptions.length);
+
   if (!optionsSelect.allOptions.length)
     return (
       <Wrapper>
