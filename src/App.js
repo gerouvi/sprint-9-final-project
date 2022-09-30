@@ -102,6 +102,14 @@ function App() {
               </Wrappers>
             }
           />
+          <Route
+            path="*"
+            element={
+              <Wrappers navMobile="true">
+                <Home />
+              </Wrappers>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

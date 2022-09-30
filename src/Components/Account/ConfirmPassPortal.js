@@ -11,7 +11,6 @@ const ConfrimPassPortal = ({
   messageSuccessNextFunction,
   messageErrorNextFunction,
   resetForm,
-  
 }) => {
   return (
     <Wrapper>
@@ -38,7 +37,7 @@ const ConfrimPassPortal = ({
                   );
                 }}
               >
-                Change
+                Ok
               </ButtonStyled>
               <ButtonStyled
                 color={THEME_STYLES.COLORS.RED}
