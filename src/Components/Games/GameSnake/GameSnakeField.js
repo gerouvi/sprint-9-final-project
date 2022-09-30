@@ -42,9 +42,7 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
   const [start, setStart] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const [randomDotCorrectAnswer, setandomDotCorrectAnswer] = useState(
-    Math.floor(Math.random() * 2)
-  );
+  const [randomDotCorrectAnswer] = useState(Math.floor(Math.random() * 2));
   const handlerRestartGame = () => {
     states.current = getInitialState();
     frame.current = 0;
