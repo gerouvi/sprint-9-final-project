@@ -67,7 +67,7 @@ const SignIn = () => {
           </LinkText>
         </div>
         <Link to="/signup">
-          <LinkText>Don't you have an account? Sing Up!</LinkText>
+          <LinkText>Don't you have an account? Sign Up!</LinkText>
         </Link>
         <Portal isOpen={newPassPortal.isOpen}>
           <NewPassPortal

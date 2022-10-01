@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { THEME_STYLES } from '../../styles/THEME_STYLES';
 import Button from './Button';
 
 export const ButtonStyled = styled(Button)`
@@ -22,5 +23,9 @@ export const ButtonStyled = styled(Button)`
 
   &:disabled:active {
     transform: scale(1);
+  }
+
+  &:disabled {
+    color: ${THEME_STYLES.COLORS.GRAY};
   }
 `;

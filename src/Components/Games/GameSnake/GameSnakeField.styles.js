@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 `;
 export const Result = styled.p`
   font-weight: bold;
+  font-size: 1.5em;
   margin-top: 15px;
 `;
 

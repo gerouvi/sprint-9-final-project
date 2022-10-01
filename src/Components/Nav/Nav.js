@@ -18,27 +18,27 @@ const Nav = ({ navMobile }) => {
         <ul>
           <li>
             <Link to="/translate">
-              <ButtonStyled>Translate</ButtonStyled>
+              <ButtonStyled disabled={!user}>Translate</ButtonStyled>
             </Link>
           </li>
           <li>
             <Link to="/addwords">
-              <ButtonStyled>Add Words</ButtonStyled>
+              <ButtonStyled disabled={!user}>Add Words</ButtonStyled>
             </Link>
           </li>
           <li>
             <Link to="/wordslist">
-              <ButtonStyled>Words List</ButtonStyled>
+              <ButtonStyled disabled={!user}>Words List</ButtonStyled>
             </Link>
           </li>
           <li>
             <Link to="/games">
-              <ButtonStyled>Games</ButtonStyled>
+              <ButtonStyled disabled={!user}>Games</ButtonStyled>
             </Link>
           </li>
           <li>
             <Link to="/account">
-              <ButtonStyled>Account</ButtonStyled>
+              <ButtonStyled disabled={!user}>Account</ButtonStyled>
             </Link>
           </li>
           {!user && (

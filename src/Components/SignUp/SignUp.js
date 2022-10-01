@@ -52,7 +52,7 @@ const SignUp = () => {
           </ButtonRoundedStyled>
         </form>
         <Link to="/signin">
-          <LinkText>Do you have an account? Sing In!</LinkText>
+          <LinkText>Do you have an account? Sign In!</LinkText>
         </Link>
       </Wrapper>
     </>
