@@ -3,17 +3,17 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBSm1MiowREH2rYEoqnf2o2GUvvjc_EQBM',
+  apiKey: 'AIzaSyAHtBeVEd5xS4JexAvu_ZltPqWNlaQWAU4',
 
-  authDomain: 'memowords-a7568.firebaseapp.com',
+  authDomain: 'sprint9-finalproject.firebaseapp.com',
 
-  projectId: 'memowords-a7568',
+  projectId: 'sprint9-finalproject',
 
-  storageBucket: 'memowords-a7568.appspot.com',
+  storageBucket: 'sprint9-finalproject.appspot.com',
 
-  messagingSenderId: '477385318320',
+  messagingSenderId: '727765099895',
 
-  appId: '1:477385318320:web:d236b843cde07d1f21c075',
+  appId: '1:727765099895:web:5371fd09ea012881b5ed72',
 };
 
 const app = initializeApp(firebaseConfig);
