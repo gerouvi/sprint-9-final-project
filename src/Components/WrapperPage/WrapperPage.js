@@ -6,7 +6,11 @@ import { ButtonStyled } from '../Buttons/Button.styles';
 import ButtonSignOut from '../Buttons/ButtonSignOut';
 import Nav from '../Nav/Nav';
 
-import { Wrapper, WrapperButtonVerifyEmail } from './WrapperPage.styles';
+import {
+  ConfrimText,
+  Wrapper,
+  WrapperButtonVerifyEmail,
+} from './WrapperPage.styles';
 
 const WrapperPage = ({ navMobile, children }) => {
   const { user } = useContext(UserAuthContext);
@@ -17,13 +21,13 @@ const WrapperPage = ({ navMobile, children }) => {
           {user && <ButtonSignOut />}
           {user && !user.emailVerified ? (
             <WrapperButtonVerifyEmail>
-              <h1>
-                Click when you have had verified your email, it can be in your
-                spams!
-              </h1>
+              <ConfrimText>
+                Confirm once you have verified your email
+              </ConfrimText>
+              <h2>Make sure you have checked your Spam folder</h2>
               <Link to="/account">
                 <ButtonStyled onClick={() => window.location.reload()}>
-                  Click!
+                  Confirm!
                 </ButtonStyled>
               </Link>
             </WrapperButtonVerifyEmail>

@@ -39,7 +39,7 @@ const WordsList = () => {
     return (
       <Wrapper>
         <ButtonGoBack pathName="/home" />
-        <h1>Words List</h1>
+        <h1>Words Lists</h1>
         <h2>No Words</h2>
       </Wrapper>
     );

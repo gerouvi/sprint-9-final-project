@@ -27,8 +27,8 @@ const Nav = ({ navMobile }) => {
             </Link>
           </li>
           <li>
-            <Link to="/wordslist">
-              <ButtonStyled disabled={!user}>Words List</ButtonStyled>
+            <Link to="/wordslists">
+              <ButtonStyled disabled={!user}>Words Lists</ButtonStyled>
             </Link>
           </li>
           <li>

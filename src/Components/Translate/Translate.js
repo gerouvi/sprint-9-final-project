@@ -86,6 +86,10 @@ const Translate = () => {
               Cancel
             </ButtonStyled>
           )}
+          <span>
+            *sometimes the API does not translate well, if you do not like the
+            translation, amend it and click on "Add Words".
+          </span>
         </form>
       </Wrapper>
     </>

@@ -9,32 +9,38 @@ const Home = () => {
   const { user } = useContext(UserAuthContext);
   return (
     <TextDescription>
-      <p>
-        Welcome to <span>memo words</span> the website where you can memorize
-        your translated words!
-      </p>
+      <div>
+        <h1>
+          Welcome to <span>Memo Words!</span>
+        </h1>
+        <h2>
+          The website that will help you improve your vocabulary in a fun way!
+        </h2>
+      </div>
 
       <OrderList>
         <li>
-          You can <span>translate</span> words from any language to any language
-          and add it in your lists
+          You can <span>translate</span> words from any language to any other
+          language and add them to your lists
         </li>
         <li>
-          You can <span>add</span> words in your lists
+          You can <span>add</span> words to your lists
         </li>
         <li>
           You can <span>modify</span>, <span>update</span> or{' '}
           <span>delete</span> your words
         </li>
         <li>
-          And you can <span>play</span> meanwhile you memorize your words!
+          And you can <span>play</span> while memorizing your words!
         </li>
       </OrderList>
 
       {!user && (
         <>
           <Link to="/signup">
-            <ButtonStyled color={THEME_STYLES.COLORS.RED}>Sign Up</ButtonStyled>
+            <ButtonStyled color={THEME_STYLES.COLORS.GREEN}>
+              Sign Up
+            </ButtonStyled>
           </Link>
           <Link to="/signin">
             <ButtonStyled>Sign In</ButtonStyled>

@@ -18,4 +18,9 @@ export const Wrapper = styled.div`
     align-items: center;
     gap: 25px;
   }
+
+  & span {
+    width: 300px;
+    text-align: center;
+  }
 `;

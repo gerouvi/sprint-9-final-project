@@ -47,7 +47,7 @@ function App() {
             }
           />
           <Route
-            path="/wordslist"
+            path="/wordslists"
             element={
               <Wrappers>
                 <WordsList />

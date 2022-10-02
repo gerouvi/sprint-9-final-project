@@ -9,14 +9,16 @@ export const TextDescription = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 20px;
 
-    & p {
-      font-size: 24px;
-      margin-bottom: 50px;
+    & div {
       text-align: center;
+    }
+
+    & div h1 {
+      margin-top: 0;
     }
 
     & p span {
