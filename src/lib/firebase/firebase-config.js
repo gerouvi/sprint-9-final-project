@@ -3,12 +3,17 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyALd-22Q1eWZloKQo1tq32B3eIq86QMPpo',
-  authDomain: 'bcn-activa-final-project.firebaseapp.com',
-  projectId: 'bcn-activa-final-project',
-  storageBucket: 'bcn-activa-final-project.appspot.com',
-  messagingSenderId: '274303959318',
-  appId: '1:274303959318:web:59a1b629365b3394d59037',
+  apiKey: 'AIzaSyAHtBeVEd5xS4JexAvu_ZltPqWNlaQWAU4',
+
+  authDomain: 'sprint9-finalproject.firebaseapp.com',
+
+  projectId: 'sprint9-finalproject',
+
+  storageBucket: 'sprint9-finalproject.appspot.com',
+
+  messagingSenderId: '727765099895',
+
+  appId: '1:727765099895:web:5371fd09ea012881b5ed72',
 };
 
 const app = initializeApp(firebaseConfig);
