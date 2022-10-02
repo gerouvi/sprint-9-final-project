@@ -26,7 +26,7 @@ const WrapperPage = ({ navMobile, children }) => {
                 Confirm once you have verified your email
               </ConfrimText>
               <h2>Make sure you have checked your Spam folder</h2>
-              <Link to="/account">
+              <Link to="/signin">
                 <ButtonStyled onClick={() => signOutFunction()}>
                   Click!
                 </ButtonStyled>
