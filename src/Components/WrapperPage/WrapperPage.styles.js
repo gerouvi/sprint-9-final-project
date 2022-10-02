@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ConfrimText = styled.h1`
-  width: 500px;
+  max-width: 500px;
 `;
 export const WrapperButtonVerifyEmail = styled.div`
   padding-top: 70px;

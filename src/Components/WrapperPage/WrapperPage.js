@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import bg from '../../assets/images/bg.png';
 import { UserAuthContext } from '../../lib/contexts/UserAuthContext';
+import { signOutFunction } from '../../lib/firebase/firebase-auth';
 import { ButtonStyled } from '../Buttons/Button.styles';
 import ButtonSignOut from '../Buttons/ButtonSignOut';
 import Nav from '../Nav/Nav';
@@ -26,8 +27,8 @@ const WrapperPage = ({ navMobile, children }) => {
               </ConfrimText>
               <h2>Make sure you have checked your Spam folder</h2>
               <Link to="/account">
-                <ButtonStyled onClick={() => window.location.reload()}>
-                  Confirm!
+                <ButtonStyled onClick={() => signOutFunction()}>
+                  Click!
                 </ButtonStyled>
               </Link>
             </WrapperButtonVerifyEmail>
