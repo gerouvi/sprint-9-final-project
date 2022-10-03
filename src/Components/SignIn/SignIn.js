@@ -16,7 +16,7 @@ const SignIn = () => {
   const { user } = useContext(UserAuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) navigate('/account');
+    if (user) navigate('/home');
   }, [user, navigate]);
 
   const { signIn, handleFieldSignInChange, signInSubmit } = useSignIn();
