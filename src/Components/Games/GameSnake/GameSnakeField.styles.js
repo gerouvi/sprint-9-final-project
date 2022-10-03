@@ -76,11 +76,6 @@ export const WrapperCenter = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 20px;
-
-  @media screen and (min-width: ${THEME_STYLES.MEDIA_QUERYS.DESKTOP}px) {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-  }
 `;
 
 export const DotAnswer = styled.span`

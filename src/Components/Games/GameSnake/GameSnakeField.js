@@ -43,11 +43,12 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   const [randomDotCorrectAnswer] = useState(Math.floor(Math.random() * 2));
+
   const handlerRestartGame = () => {
     states.current = getInitialState();
     frame.current = 0;
     setRefresh(0);
-    setStart(false);
+    setStart(true);
   };
 
   const gameLoop = () => {
@@ -63,10 +64,10 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
     );
 
     if (isOutside || hasEatenTail || hasEatenFakeFruit) {
+      cancelAnimationFrame(idAnimationFrame);
       states.current.finishGame = true;
       states.current.snakeCoords.pop();
-      setStart(1);
-      cancelAnimationFrame(idAnimationFrame);
+      setStart(false);
     } else {
       setRefresh((prev) => prev + 1);
     }
@@ -141,15 +142,12 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
     <>
       <WrapperTop>
         <div>
-          {window.screen.width < THEME_STYLES.MEDIA_QUERYS.DESKTOP && (
-            <ButtonStyled onClick={() => setIsMobile((prev) => !prev)}>
-              Display mobile arrows
-            </ButtonStyled>
-          )}
+          <ButtonStyled onClick={() => setIsMobile((prev) => !prev)}>
+            Display mobile arrows
+          </ButtonStyled>
+          <ButtonStyled onClick={handlerRestartGame}>Start</ButtonStyled>
         </div>
-        {states.current.finishGame && (
-          <ButtonStyled onClick={handlerRestartGame}>Next Game</ButtonStyled>
-        )}
+
         <Result>{states.current.accerts}</Result>
         <WrapperLegend>
           <p>{gameOpt.question}?</p>
@@ -178,20 +176,8 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
             </span>
           </div>
         </WrapperLegend>
-        <div>
-          {window.screen.width < THEME_STYLES.MEDIA_QUERYS.DESKTOP &&
-            !start && (
-              <ButtonStyled onClick={() => setStart(true)}>Start</ButtonStyled>
-            )}
-        </div>
       </WrapperTop>
       <WrapperCenter>
-        {window.screen.width >= THEME_STYLES.MEDIA_QUERYS.DESKTOP && (
-          <ButtonStyled onClick={() => setStart((prev) => !prev)}>
-            Start
-          </ButtonStyled>
-        )}
-
         <div>
           <FieldBorders>
             {states.current.finishGame && <GameOver>GAME OVER</GameOver>}
@@ -212,11 +198,6 @@ const GameSnakeField = ({ gameOpt, handlerNextGame }) => {
             <ArrowDown id="btnDown" isMobile={isMobile} />
           </WrapperArrows>
         </div>
-        {window.screen.width >= THEME_STYLES.MEDIA_QUERYS.DESKTOP && (
-          <ButtonStyled onClick={() => setIsMobile((prev) => !prev)}>
-            Display mobile arrows
-          </ButtonStyled>
-        )}
       </WrapperCenter>
     </>
   );

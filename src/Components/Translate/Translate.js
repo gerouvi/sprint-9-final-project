@@ -67,14 +67,12 @@ const Translate = () => {
               </option>
             ))}
           </SelectStyled>
-          {translateWords.word2 && (
-            <InputStyled
-              value={translateWords.word2}
-              onChange={(e) =>
-                handleFieldsTranslateWordsChanged('word2', e.target.value)
-              }
-            />
-          )}
+          <InputStyled
+            value={translateWords.word2}
+            onChange={(e) =>
+              handleFieldsTranslateWordsChanged('word2', e.target.value)
+            }
+          />
           <ButtonStyled>
             {translateWords.word2 ? 'Add Words' : 'Translate'}
           </ButtonStyled>
